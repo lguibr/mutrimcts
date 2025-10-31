@@ -244,7 +244,7 @@ namespace mutrimcts
     catch (const std::exception &e)
     {
       std::cerr << "Error during initial inference: " << e.what() << std::endl;
-      return {{}, 0.0f, {}};
+      return {VisitMap{}, 0.0f, PolicyMap{}};
     }
 
     // --- Step 2: Create Root Node ---

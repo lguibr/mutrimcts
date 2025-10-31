@@ -58,13 +58,13 @@ std::tuple<tc::VisitMap, tc::Value, tc::PolicyMap> run_mcts_cpp_wrapper(
         network_interface,
         config_cpp);
   }
-  catch (const std::exception &e)
-  {
-    throw py::value_error(std::string("Error in C++ MCTS execution: ") + e.what());
-  }
   catch (const py::error_already_set &)
   {
     throw; // Re-throw Python exceptions
+  }
+  catch (const std::exception &e)
+  {
+    throw py::value_error(std::string("Error in C++ MCTS execution: ") + e.what());
   }
 }
 
