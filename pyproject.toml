@@ -1,0 +1,55 @@
+# File: mutrimcts/pyproject.toml
+
+[build-system]
+requires = [
+  "setuptools>=61.0",
+  "wheel",
+  "pybind11>=2.10",
+  "cmake>=3.14"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mutrimcts"
+version = "0.1.0"
+authors = [
+  { name="Luis Guilherme P. M.", email="lgpelin92@gmail.com" },
+]
+description = "High-performance C++ MuZero MCTS in learned latent space"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: C++",
+]
+dependencies = [
+  "numpy>=1.20.0",
+  "pydantic>=2.0.0",
+]
+
+[project.urls]
+"Homepage"    = "https://github.com/lguibr/mutrimcts"
+"Bug Tracker" = "https://github.com/lguibr/mutrimcts/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0","pytest-cov","ruff","mypy"]
+
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+testpaths = ["tests"]
+
+[tool.mypy]
+# Global options
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = false # Be strict by default
+disallow_untyped_defs = true   # Ensure functions are typed
+
+[[tool.mypy.overrides]]
+# Ignore the compiled C++ extension module
+module = "mutrimcts.mutrimcts_cpp"
+ignore_missing_imports = true

@@ -1,0 +1,7 @@
+include LICENSE
+include README.md
+recursive-include src/mutrimcts/cpp *.cpp *.h CMakeLists.txt
+recursive-include src/mutrimcts *.py py.typed
+global-exclude __pycache__ *.so *.pyd *.dylib *.egg-info CMakeCache.txt CMakeFiles
+prune build
+prune dist

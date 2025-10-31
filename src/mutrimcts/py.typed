@@ -1,0 +1,4 @@
+# PEP 561 marker file.
+# This file is intentionally empty.
+# It serves as a marker for PEP 561 compliance, indicating that the
+# 'mutrimcts' package includes type information.
