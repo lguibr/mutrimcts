@@ -26,10 +26,10 @@ class MuZeroNetworkInterface(Protocol):
     ) -> tuple[Any, dict[int, float], float]:
         """
         Takes a raw game observation and produces the initial hidden state, policy, and value.
-        
+
         Args:
             observation: The raw game observation/state
-            
+
         Returns:
             A tuple containing:
                 - hidden_state: The learned latent representation (can be any type, typically a tensor)
@@ -43,11 +43,11 @@ class MuZeroNetworkInterface(Protocol):
     ) -> tuple[Any, float, dict[int, float], float]:
         """
         Takes a hidden state and action, and predicts the next state, reward, policy, and value.
-        
+
         Args:
             hidden_state: The current latent representation
             action: The action to take
-            
+
         Returns:
             A tuple containing:
                 - next_hidden_state: The predicted next latent representation
@@ -65,12 +65,12 @@ def run_mcts(
 ) -> tuple[dict[int, int], float, dict[int, float]]:
     """
     Python entry point for MuZero MCTS in learned latent space.
-    
+
     Args:
         initial_observation: The current game observation (raw features).
         network_interface: The MuZero network evaluation interface.
         config: The MCTS search configuration.
-        
+
     Returns:
         A tuple containing:
             - visit_counts (dict[int, int]): Visit counts for actions from the root.
@@ -83,9 +83,7 @@ def run_mcts(
 
     # Network interface type check
     if not isinstance(network_interface, MuZeroNetworkInterface):
-        raise TypeError(
-            "network_interface must implement MuZeroNetworkInterface"
-        )
+        raise TypeError("network_interface must implement MuZeroNetworkInterface")
 
     # Import the C++ extension
     try:

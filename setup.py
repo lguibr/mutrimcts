@@ -170,7 +170,9 @@ setup(
     package_dir={"": "src"},
     # Include the py.typed file
     package_data={"mutrimcts": ["py.typed"]},
-    ext_modules=[CMakeExtension("mutrimcts.mutrimcts_cpp", sourcedir="src/mutrimcts/cpp")],
+    ext_modules=[
+        CMakeExtension("mutrimcts.mutrimcts_cpp", sourcedir="src/mutrimcts/cpp")
+    ],
     cmdclass={
         "build_ext": CMakeBuild,
         "develop": Develop,
